@@ -1,5 +1,11 @@
 # create-svelte
 
+## 2.0.0-next.43
+
+### Patch Changes
+
+- bdf4ed9: Fix typo in `ignorePatterns` for the `.eslintrc.cjs` generated for TypeScript projects so that `.eslintrc.cjs` correctly ignores itself.
+
 ## 2.0.0-next.42
 
 ### Patch Changes
