@@ -182,10 +182,12 @@ export function create_client({ target, base, trailing_slash }) {
 	}
 
 	/** @param {URL} url */
-	async function prefetch(url) {
+	async function prefetch(url, failSilently = false) {
 		const intent = get_navigation_intent(url);
 
 		if (!intent) {
+			if (failSilently)	return;
+
 			throw new Error('Attempted to prefetch a URL that does not belong to this app');
 		}
 
@@ -1154,7 +1156,7 @@ export function create_client({ target, base, trailing_slash }) {
 			const trigger_prefetch = (event) => {
 				const { url, options } = find_anchor(event);
 				if (url && options.prefetch === '') {
-					prefetch(url);
+					prefetch(url, true);
 				}
 			};
 
